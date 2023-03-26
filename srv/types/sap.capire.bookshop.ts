@@ -1,4 +1,4 @@
-import { Locale } from "./sap.common";
+import { Locale, ICurrencies } from "./sap.common";
 
 export interface IBooks {
     createdAt?: Date;
@@ -14,7 +14,7 @@ export interface IBooks {
     genre_ID?: number;
     stock: number;
     price: number;
-    currency: Currencies;
+    currency: ICurrencies;
     currency_code?: string;
     image: Buffer;
     texts?: IBooksTexts[];

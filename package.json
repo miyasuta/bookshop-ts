@@ -7,15 +7,21 @@
   "private": true,
   "dependencies": {
     "@sap/cds": ">=5",
-    "express": "^4"
+    "express": "^4",
+    "hdb": "^0.19.0"
   },
   "devDependencies": {
+    "@types/node": "^18.15.9",
     "cds2types": "^3.0.0",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
     "start": "cds run",
-    "start:ts": "cds-ts watch"
+    "start:ts": "cds-ts watch",
+    "build:cf": "npm run build:cds && npm run cleanup:ts && npm run build:ts",
+    "build:ts": "tsc",
+    "build:cds": "cds build --production",
+    "cleanup:ts": "npx rimraf gen/srv/srv/**/*.ts"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -40,6 +46,13 @@
     "rules": {
       "no-console": "off",
       "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "hana-cloud"
+      }
     }
   }
 }

@@ -1,0 +1,11 @@
+@server = https://f83f5860trial-dev-bookshop-ts-srv.cfapps.us10-001.hana.ondemand.com
+
+
+###
+GET {{server}}/browse/ListOfBooks
+
+### 
+POST {{server}}/browse/submitOrder
+Content-Type: application/json
+
+{ "book":201, "quantity":5 }
